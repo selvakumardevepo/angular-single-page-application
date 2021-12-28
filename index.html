@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="listMaker">
+<head>
+	<title>List maker</title>
+	<!--Bootstrap 5 cdn-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!--Angular cdn-->
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!--Script file-->
+    <script type="text/javascript" src="script.js"></script>
+    <!--Style sheet-->
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div class="col-lg-4 col-sm-12 col-xs-12 col-md-4 form-container">
+<div ng-controller="myCtrl" ng-init="updatetbl()">
+	<form name="myForm" action="#">
+		<input type="hidden" name="id" placeholder="id"><br><br>
+		<label class="form-label">Name</label>
+		<input type="text" name="name" ng-model="name" class="form-control" placeholder="Enter your name" autocomplete="off"><br>
+		<label class="form-label">Phone</label>
+		<input type="text" name="phone" ng-model="phone" class="form-control" placeholder="Enter your phone number" autocomplete="off"><br><br>		
+		<input type="button" ng-click="insertdataDb()" value="{{btnname}}" class="btn btn-info">
+	</form><br/>
+	<div class="tbl-cntr">
+	<table cellpadding="10px" border="1px" class="table table-dark">
+		<tr>
+			<td>NAME</td>
+			<td>PHONE</td>
+			<td>UPDATE</td>			
+		</tr>
+		<tr ng-repeat="x in value">
+			<td>{{x.name}}</td>
+			<td>{{x.phone}}</td>
+			<td><button class="btn btn-danger" ng-click="updatedb(x.id,x.name,x.phone)">UPDATE</button></td>
+		</tr>
+	</table>
+	</div>
+</div>
+</div>
+</body>
+</html>
